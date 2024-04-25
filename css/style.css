@@ -70,6 +70,60 @@ main {
     width: 60vw;
 }
 
+.card {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.card-image {
+    width: 15em;
+    margin: 2em;
+}
+
+.data-card {
+    width: calc(100% - 19em);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    color: white;
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 2.5em;
+}
+
+.type, .race, .archetype {
+    color: white;
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.5em;
+}
+
+.description {
+    color: white;
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.3em;
+}
+
+.atributes-container {
+    display: flex;
+    margin: 1em;
+}
+
+.icon-type, .icon-race, .icon-archetype {
+    height: 2em;
+    margin: 0 0.5em;
+}
+
 footer {
     background-color: #474146;
     justify-content: center;
@@ -83,6 +137,6 @@ footer h3 {
     font-family: "Roboto", sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 1.6em;
+    font-size: 1.3em;
     color: white;
 }
