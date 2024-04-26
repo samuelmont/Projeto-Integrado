@@ -30,7 +30,6 @@ const getDataInput = () => {
 
 // Função que busca dados na API
 const search = async (num, offset, params) => {
-    console.log(params? params : 'teste')
     let url = `https://db.ygoprodeck.com/api/v7/cardinfo.php?type=spell%20card&num=${num}&offset=${offset}${params? params : ''}`;
     console.log(url)
     const response = await fetch(url);
