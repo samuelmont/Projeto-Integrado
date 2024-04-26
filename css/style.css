@@ -14,6 +14,7 @@ header {
     display: flex;
     width: 100vw;
     height: 8vh;
+    position: fixed;
 }
 
 #logo {
@@ -103,7 +104,7 @@ main {
     font-family: "Roboto", sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 1.5em;
+    font-size: 1.6em;
 }
 
 .description {
@@ -111,7 +112,9 @@ main {
     font-family: "Roboto", sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 1.3em;
+    font-size: 1.4em;   
+    margin: 0 2em;
+    text-align: justify;
 }
 
 .atributes-container {

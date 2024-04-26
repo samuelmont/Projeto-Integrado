@@ -1,18 +1,44 @@
-const search = async () => {
-    const url = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=spell%20card";
+const main = async() => {
+    // numeros que serão passados ao url
+    const num = 20; // Quantidade de valores que serão carregados
+    let offset = 0; // Número de que apartir começará a  
+    
+    load(num, offset);
+    offset = offset + 20;
+
+    // Carregar mais quando chegar ao final da pagina
+    window.addEventListener("scroll", () => {
+        const endOfPage = window.innerHeight + window.scrollY >= document.body.offsetHeight;
+        if(endOfPage) {
+            load(num, offset);
+            offset = offset + 20;
+        }
+    });
+}
+
+// Função que utiliza as funçoes: search() e passa os dados por loop ao createElements()
+const load = async (num, offset) => {
+    const dataJson = await search(num, offset);
+    dataJson.forEach(element => {
+        createElements(element);
+    });
+}
+
+const getDataInput = () => {
+    const searchInput = document.getElementById('search-input');
+}
+
+// Função que busca dados na API
+const search = async (num, offset, params) => {
+    console.log(params? params : 'teste')
+    let url = `https://db.ygoprodeck.com/api/v7/cardinfo.php?type=spell%20card&num=${num}&offset=${offset}${params? params : ''}`;
+    console.log(url)
     const response = await fetch(url);
     const data = await response.json();
     return data.data;
 }
 
-const main = async () => {
-    const dados = await search();
-    // dados.forEach(element => {
-    //     createElements(element)
-    // });
-    createElements(dados[0])
-}
-
+// Função que declara e insere os elementos no HTML
 const createElements = (element) => {
     const container = document.getElementById('main-container'); // Container principal
 
@@ -31,18 +57,12 @@ const createElements = (element) => {
     const description = document.createElement('p');
 
     // Criando os textNode
-    const cardUrl = document.createTextNode(element.card_images[0].image_url_small);
-    console.log(element.card_images[0].image_url_small);
     const titleTextNode = document.createTextNode(element.name);
-    const typeUrl = document.createTextNode(`https://images.ygoprodeck.com/images/cards/icons/${element.type}.jpg`);
-    console.log(`https://images.ygoprodeck.com/images/cards/icons/${element.type}.jpg`)
     const typeTextNode = document.createTextNode(element.type);
-    const raceUrl = document.createTextNode(`https://images.ygoprodeck.com/images/cards/icons/race/${element.race}.png`);
     const raceTextNode = document.createTextNode(element.race);
-    const archetypeUrl = document.createTextNode(`./imgs/archetype.svg`);
     const archetypeTextNode = document.createTextNode(element.archetype);
     const descriptionTextNode = document.createTextNode(element.desc);
-
+    
     // Setando as classes
     cardDiv.setAttribute('class', 'card');
     cardImg.setAttribute('class', 'card-image');
@@ -56,21 +76,23 @@ const createElements = (element) => {
     iconArchetype.setAttribute('class', 'icon-archetype');
     archetypeText.setAttribute('class', 'archetype');
     description.setAttribute('class', 'description');
+    
+    // Setando os URL's das imagens
+    cardImg.setAttribute('src', element.card_images[0].image_url_small);
+    iconType.setAttribute('src', `https://images.ygoprodeck.com/images/cards/icons/${element.type}.jpg`);
+    iconRace.setAttribute('src', `https://images.ygoprodeck.com/images/cards/icons/race/${element.race}.png`);
+    iconArchetype.setAttribute('src', `./imgs/archetype.svg`);
 
-    // Setando os texto alternativo das imagens
+    // Setando os textos alternativos das imagens
     cardImg.setAttribute('alt', 'picture of an Yu-Gi-Oh card');
     iconType.setAttribute('alt', 'icon type card');
     iconRace.setAttribute('alt', 'icon race card');
     iconArchetype.setAttribute('alt', 'simplified potion image');
 
     // Inserindo os textNode nas tag HTML
-    cardImg.appendChild(cardUrl);
     title.appendChild(titleTextNode);
-    iconType.appendChild(typeUrl);
     typeText.appendChild(typeTextNode);
-    iconRace.appendChild(raceUrl);
     raceText.appendChild(raceTextNode);
-    iconArchetype.appendChild(archetypeUrl);
     archetypeText.appendChild(archetypeTextNode);
     description.appendChild(descriptionTextNode);
 
@@ -89,4 +111,4 @@ const createElements = (element) => {
     dataDiv.appendChild(description);
 }
 
-main()
+main();
