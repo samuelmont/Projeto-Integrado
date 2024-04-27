@@ -1,37 +1,58 @@
 const main = async() => {
     // numeros que serão passados ao url
     const num = 20; // Quantidade de valores que serão carregados
-    let offset = 0; // Número de que apartir começará a  
+    let offset = 0; // Número de que apartir começará a pesquisa
     
-    load(num, offset);
+    load(`&num=${num}&offset=${offset}`);
     offset = offset + 20;
 
     // Carregar mais quando chegar ao final da pagina
     window.addEventListener("scroll", () => {
         const endOfPage = window.innerHeight + window.scrollY >= document.body.offsetHeight;
-        if(endOfPage) {
-            load(num, offset);
+        const searchInput = document.getElementById('search-input');
+        if(endOfPage && searchInput.value == "") {
+            load(`&num=${num}&offset=${offset}`);
             offset = offset + 20;
+            console.log('scroll')
         }
     });
+
+    window.addEventListener("keyup", () => {
+        const searchInput = document.getElementById('search-input');
+        if(searchInput.value) {
+            offset = 0;
+            deleteCards();
+            load(`&fname=${searchInput.value}`);
+            console.log(searchInput.value)
+        } else if(searchInput.value == "") {
+            offset = 0;
+            deleteCards();
+            load(`&num=${num}&offset=${offset}`);
+            console.log(searchInput.value)
+        }
+    })
+}
+
+const deleteCards = () => {
+    const container = document.getElementById('main-container'); // Container principal
+    container.innerHTML = ''
 }
 
 // Função que utiliza as funçoes: search() e passa os dados por loop ao createElements()
-const load = async (num, offset) => {
-    const dataJson = await search(num, offset);
+const load = async (params) => {
+    const dataJson = await search(params);
     dataJson.forEach(element => {
         createElements(element);
     });
 }
 
-const getDataInput = () => {
-    const searchInput = document.getElementById('search-input');
-}
-
 // Função que busca dados na API
-const search = async (num, offset, params) => {
-    let url = `https://db.ygoprodeck.com/api/v7/cardinfo.php?type=spell%20card&num=${num}&offset=${offset}${params? params : ''}`;
-    console.log(url)
+const search = async (params) => {
+    let url = `https://db.ygoprodeck.com/api/v7/cardinfo.php?type=spell%20card`;
+    if (params != '') {
+        url = url + params
+    }
+    console.log(url); // TIRAR DEPOIS
     const response = await fetch(url);
     const data = await response.json();
     return data.data;
