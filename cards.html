@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yu-Gi-Oh!</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" type="image/x-icon" href="./imgs/icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <script src="./js/main.js" defer type="module"></script>
+</head>
+<body>
+    <header>
+        <a href="./index.html"><img src="./imgs/logo.svg" alt="Yu-Gi-Oh! Logo" id="logo"></a>
+        <nav id="page-navigation">
+            <ul>
+                <a href="./index.html"><li>Home</li></a>
+                <a href="./cards.html"><li>Cards</li></a>
+                <a href="https://www.crunchyroll.com/pt-br/series/G6P8DV7V6/yu-gi-oh"><li>Anime</li></a>
+                <a href="https://mangaschan.net/11431517/yu-gi-oh-capitulo-1/"><li>Manga</li></a>
+            </ul>
+        </nav>
+        <span id="search-container">
+            <label for="search" id="search-label"><img src="./imgs/magnifier.svg" alt="magnifier" id="magnifier"></label>
+            <input type="text" name="search" placeholder="Pesquise aqui" id="search-input">
+        </span>
+    </header>
+    <main>
+        <video autoplay loop muted id="animated-bg"> <!-- Background animado-->
+            <source src="./imgs/background.mp4" type="video/mp4">
+        </video>
+        <div id="main-container">
+            <!-- Example of the card -->
+            <!-- <div class="card">
+                <img src="https://images.ygoprodeck.com/images/cards_small/34541863.jpg" alt="picture of an Yu-Gi-Oh card" class="card-image">
+                <div class="data-card">
+                    <h1 class="title">"A" Cell Breeding Device</h1>
+                    <span class="atributes-container">
+                        <img src="https://images.ygoprodeck.com/images/cards/icons/Spell Card.jpg" alt="icon type card" class="icon-type">
+                        <h2 class="type">Spell card</h2>
+                        <img src="https://images.ygoprodeck.com/images/cards/icons/race/Normal.png" alt="icon race card" class="icon-race">
+                        <h2 class="race">Continuous</h2>
+                        <img src="https://ygoprodeck.com/wp-content/uploads/2017/01/level.png" alt="red circle with a yellow star inside" class="icon-level">
+                        <h2 class="level">4</h2>
+                        <img src="./imgs/atk.svg" alt="white sword icon" class="icon-atk">
+                        <h2 class="atk">3000</h2>
+                        <img src="./imgs/def.svg" alt="white shield icon" class="icon-def">
+                        <h2 class="def">1500</h2>
+                        <img src="./imgs/archetype.svg" alt="simplified potion image" class="icon-archetype">
+                        <h2 class="archetype">Alien</h2>
+                    </span>
+                    <p class="description">During each of your Standby Phases, put 1 A-Counter on 1 face-up monster your opponent controls.</p>
+                </div>
+            </div> -->
+        </div>
+    </main>
+    <footer>
+        <h3>Feito por Samuel Monteiro</h3>
+    </footer>
+</body>
+</html>

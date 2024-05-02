@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yu-Gi-Oh!</title>
     <link rel="stylesheet" href="./css/style.css">
-    <script src="./js/main.js" defer type="module"></script>
     <link rel="icon" type="image/x-icon" href="./imgs/icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,29 +12,35 @@
 </head>
 <body>
     <header>
-        <img src="./imgs/logo.svg" alt="Yu-Gi-Oh! Logo" id="logo">
-        <span>
-            <label for="search" id="search-label"><img src="./imgs/magnifier.svg" alt="magnifier" id="magnifier"></label>
-            <input type="text" name="search" placeholder="Pesquise aqui" id="search-input">
-        </span>
+        <a href="./index.html"><img src="./imgs/logo.svg" alt="Yu-Gi-Oh! Logo" id="logo"></a>
+        <nav id="page-navigation">
+            <ul>
+                <a href="./index.html"><li>Home</li></a>
+                <a href="./cards.html"><li>Cards</li></a>
+                <a href="https://www.crunchyroll.com/pt-br/series/G6P8DV7V6/yu-gi-oh"><li>Anime</li></a>
+                <a href="https://mangaschan.net/11431517/yu-gi-oh-capitulo-1/"><li>Manga</li></a>
+            </ul>
+        </nav>
+        <a href="./cards.html">
+            <span id="search-container">
+                <label for="search" id="search-label"><img src="./imgs/magnifier.svg" alt="magnifier" id="magnifier"></label>
+                <input type="text" name="search" placeholder="Pesquise aqui" id="search-input">
+            </span>
+        </a>
     </header>
     <main>
-        <div id="main-container">
-            <!-- <div class="card">
-                <img src="https://images.ygoprodeck.com/images/cards_small/34541863.jpg" alt="picture of an Yu-Gi-Oh card" class="card-image">
-                <div class="data-card">
-                    <h1 class="title">"A" Cell Breeding Device</h1>
-                    <span class="atributes-container">
-                        <img src="https://images.ygoprodeck.com/images/cards/icons/Spell Card.jpg" alt="icon type card" class="icon-type">
-                        <h2 class="type">Spell card</h2>
-                        <img src="https://images.ygoprodeck.com/images/cards/icons/race/Normal.png" alt="icon race card" class="icon-race">
-                        <h2 class="race">Continuous</h2>
-                        <img src="./imgs/archetype.svg" alt="simplified potion image" class="icon-archetype">
-                        <h2 class="archetype">Alien</h2>
-                    </span>
-                    <p class="description">During each of your Standby Phases, put 1 A-Counter on 1 face-up monster your opponent controls.</p>
-                </div>
-            </div> -->
+        <video autoplay loop muted id="animated-bg"> <!-- Background animado-->
+            <source src="./imgs/background.mp4" type="video/mp4">
+        </video>
+        <div id="home-container">
+            <div>
+                <h1>Projeto integrado</h1>
+                <h2>Disciplinas:</h2>
+                <h2>Design Web</h2>
+                <h2>Web programming for front end</h2>
+                <p>Este web site foi feito usando somente Javascript, HTML5 e CSS3 sem nenhum framework ou biblioteca.</p>
+            </div>
+            <img src="./imgs/Yugi-bg.png" alt="A Colored image of Yugi muto" id="yugi-muto">
         </div>
     </main>
     <footer>
